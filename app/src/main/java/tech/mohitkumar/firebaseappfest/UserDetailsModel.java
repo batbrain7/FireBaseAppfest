@@ -6,24 +6,42 @@ package tech.mohitkumar.firebaseappfest;
 
 public class UserDetailsModel {
 
-//    String uid;
     String name;
     String email;
     String pno;
     String profileLink;
     String occupation;
+    String latitude;
+    String longitude;
 
     public UserDetailsModel() {
     }
 
-    public UserDetailsModel(String name, String email, String pno, String profileLink, String occupation) {
+    public UserDetailsModel(String name, String email, String pno, String profileLink, String occupation, String latitude, String longitude) {
         this.name = name;
         this.email = email;
         this.pno = pno;
         this.profileLink = profileLink;
         this.occupation = occupation;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
 
     public String getName() {
         return name;
