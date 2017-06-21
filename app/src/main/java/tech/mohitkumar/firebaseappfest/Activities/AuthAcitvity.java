@@ -15,8 +15,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import tech.mohitkumar.firebaseappfest.R;
+import tech.mohitkumar.firebaseappfest.UserDetailsModel;
 
 public class AuthAcitvity extends AppCompatActivity {
 
@@ -24,13 +27,18 @@ public class AuthAcitvity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    FirebaseDatabase database;
+    DatabaseReference reference;
 
-    EditText usernameEt, passwordEt, emailEt;
+    FirebaseUser user;
+    String uid;
+
+    EditText passwordEt, emailEt;
     Button signUp;
 
-    String email;
-    String password;
-    String username;
+    String email, password, name, phone, company,profileLink;
+
+    EditText nameEt, phoneEt, linkedinEt, companyEt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +46,10 @@ public class AuthAcitvity extends AppCompatActivity {
         setContentView(R.layout.activity_auth_acitvity);
 
         mAuth = FirebaseAuth.getInstance();
+
+        database = FirebaseDatabase.getInstance();
+
+        reference = database.getReference();
 
         attachViews();
 
@@ -68,41 +80,48 @@ public class AuthAcitvity extends AppCompatActivity {
 
     private void attachViews() {
 
-        usernameEt = (EditText) findViewById(R.id.username);
         passwordEt = (EditText) findViewById(R.id.password);
         emailEt = (EditText) findViewById(R.id.email);
         signUp = (Button) findViewById(R.id.signup_button);
+        nameEt = (EditText) findViewById(R.id.name);
+        phoneEt = (EditText) findViewById(R.id.pno);
+        linkedinEt = (EditText) findViewById(R.id.linkedin);
+        companyEt = (EditText) findViewById(R.id.company);
 
     }
 
-    private void startSignIn() {
-
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
-
-                        // If sign in fails, display a message to the user. If sign in succeeds
-                        // the auth state listener will be notified and logic to handle the
-                        // signed in user can be handled in the listener.
-                        if (!task.isSuccessful()) {
-                            Log.w(TAG, "signInWithEmail:failed", task.getException());
-                            Toast.makeText(AuthAcitvity.this, "Can't sign in",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-                });
-    }
+//    private void startSignIn() {
+//
+//        mAuth.signInWithEmailAndPassword(email, password)
+//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
+//
+//                        // If sign in fails, display a message to the user. If sign in succeeds
+//                        // the auth state listener will be notified and logic to handle the
+//                        // signed in user can be handled in the listener.
+//                        if (!task.isSuccessful()) {
+//                            Log.w(TAG, "signInWithEmail:failed", task.getException());
+//                            Toast.makeText(AuthAcitvity.this, "Can't sign in",
+//                                    Toast.LENGTH_SHORT).show();
+//                        }
+//
+//                    }
+//                });
+//    }
 
     private void startSignUp() {
 
         email = emailEt.getText().toString();
         password = passwordEt.getText().toString();
-        username = usernameEt.getText().toString();
+        name = nameEt.getText().toString();
+        phone = phoneEt.getText().toString();
+        company = companyEt.getText().toString();
+        profileLink = linkedinEt.getText().toString();
 
-        if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(username)) {
+        if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(name) && !TextUtils.isEmpty(phone)
+                && !TextUtils.isEmpty(company) && !TextUtils.isEmpty(profileLink)) {
 
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -113,6 +132,12 @@ public class AuthAcitvity extends AppCompatActivity {
                             if (!task.isSuccessful()) {
                                 Toast.makeText(AuthAcitvity.this, "Sign up fail",
                                         Toast.LENGTH_SHORT).show();
+                            }
+                            else    {
+                                user = FirebaseAuth.getInstance().getCurrentUser();
+                                UserDetailsModel model = new UserDetailsModel(name, email, phone, profileLink, company);
+                                reference.child("Users").child(user.getUid()).setValue(model);
+                                Log.d(TAG, "onComplete: Details pushed in firebase");
                             }
 
                         }

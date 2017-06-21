@@ -7,9 +7,9 @@
     tools:context="tech.mohitkumar.firebaseappfest.Activities.AuthAcitvity">
 
     <LinearLayout
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
         android:orientation="vertical">
 
         <TextView
@@ -30,14 +30,15 @@
             android:background="@color/shadow_lighter_color">
 
             <EditText
-                android:id="@+id/email"
+                android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:background="#00000000"
-                android:hint="E-mail address"
+                android:hint="Name"
                 android:inputType="textEmailAddress"
                 android:paddingLeft="10dp"
                 android:textColorHint="#fff"
+                android:textColor="#fff"
                 android:textSize="14dp" />
         </RelativeLayout>
 
@@ -49,16 +50,18 @@
             android:background="@color/shadow_lighter_color">
 
             <EditText
-                android:id="@+id/username"
+                android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:background="#00000000"
-                android:hint="Username"
-                android:inputType="text"
+                android:hint="E-mail address"
+                android:textColor="#fff"
+                android:inputType="textEmailAddress"
                 android:paddingLeft="10dp"
                 android:textColorHint="#fff"
                 android:textSize="14dp" />
         </RelativeLayout>
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -75,6 +78,67 @@
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:paddingLeft="10dp"
+                android:textColor="#fff"
+                android:textColorHint="#fff"
+                android:textSize="14dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:alpha="0.5"
+            android:background="@color/shadow_lighter_color">
+
+            <EditText
+                android:id="@+id/pno"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="#00000000"
+                android:hint="Mobile No."
+                android:textColor="#fff"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="10dp"
+                android:textColorHint="#fff"
+                android:textSize="14dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:alpha="0.5"
+            android:background="@color/shadow_lighter_color">
+
+            <EditText
+                android:id="@+id/linkedin"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="#00000000"
+                android:hint="LinkedIn/Github"
+                android:textColor="#fff"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="10dp"
+                android:textColorHint="#fff"
+                android:textSize="14dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:alpha="0.5"
+            android:background="@color/shadow_lighter_color">
+
+            <EditText
+                android:id="@+id/company"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="#00000000"
+                android:hint="Company/Occupation"
+                android:textColor="#fff"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="10dp"
                 android:textColorHint="#fff"
                 android:textSize="14dp" />
         </RelativeLayout>
@@ -83,7 +147,9 @@
             android:id="@+id/signup_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
             android:alpha="0.5"
             android:background="@drawable/button_layout"
             android:onClick="SignUp"
@@ -91,39 +157,4 @@
             android:textColor="#fff" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="vertical">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:alpha="0.7"
-            android:background="#fff"/>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0.7"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="Do you have an account?"
-                android:textColor="#fff" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Login"
-                android:textColor="#fff"
-                android:textStyle="bold" />
-        </LinearLayout>
-    </LinearLayout>
 </RelativeLayout>
