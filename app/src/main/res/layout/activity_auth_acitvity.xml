@@ -1,31 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/signup_background"
     tools:context="tech.mohitkumar.firebaseappfest.Activities.AuthAcitvity">
 
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/avi"
+        style="@style/AVLoadingIndicatorView.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:visibility="invisible"
+        app:indicatorColor="#fff"
+        app:indicatorName="BallClipRotatePulseIndicator" />
+
     <LinearLayout
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:gravity="center"
-            android:text="Create an Account"
-            android:textColor="#fff"
-            android:textSize="20dp"
-            android:textStyle="normal" />
+        <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="20dp"-->
+        <!--android:gravity="center"-->
+        <!--android:text="Create an Account"-->
+        <!--android:textColor="#fff"-->
+        <!--android:textSize="20dp"-->
+        <!--android:textStyle="normal" />-->
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:src="@drawable/firebase_ic" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
             android:alpha="0.5"
             android:background="@color/shadow_lighter_color">
 
@@ -37,15 +60,18 @@
                 android:hint="Name"
                 android:inputType="textEmailAddress"
                 android:paddingLeft="10dp"
-                android:textColorHint="#fff"
                 android:textColor="#fff"
+                android:textColorHint="#fff"
                 android:textSize="14dp" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
             android:alpha="0.5"
             android:background="@color/shadow_lighter_color">
 
@@ -55,9 +81,9 @@
                 android:layout_height="45dp"
                 android:background="#00000000"
                 android:hint="E-mail address"
-                android:textColor="#fff"
                 android:inputType="textEmailAddress"
                 android:paddingLeft="10dp"
+                android:textColor="#fff"
                 android:textColorHint="#fff"
                 android:textSize="14dp" />
         </RelativeLayout>
@@ -66,7 +92,10 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
             android:alpha="0.5"
             android:background="@color/shadow_lighter_color">
 
@@ -86,7 +115,10 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
             android:alpha="0.5"
             android:background="@color/shadow_lighter_color">
 
@@ -96,9 +128,9 @@
                 android:layout_height="45dp"
                 android:background="#00000000"
                 android:hint="Mobile No."
-                android:textColor="#fff"
                 android:inputType="textEmailAddress"
                 android:paddingLeft="10dp"
+                android:textColor="#fff"
                 android:textColorHint="#fff"
                 android:textSize="14dp" />
         </RelativeLayout>
@@ -106,7 +138,10 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
             android:alpha="0.5"
             android:background="@color/shadow_lighter_color">
 
@@ -116,9 +151,9 @@
                 android:layout_height="45dp"
                 android:background="#00000000"
                 android:hint="LinkedIn/Github"
-                android:textColor="#fff"
                 android:inputType="textEmailAddress"
                 android:paddingLeft="10dp"
+                android:textColor="#fff"
                 android:textColorHint="#fff"
                 android:textSize="14dp" />
         </RelativeLayout>
@@ -126,7 +161,10 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
             android:alpha="0.5"
             android:background="@color/shadow_lighter_color">
 
@@ -136,9 +174,9 @@
                 android:layout_height="45dp"
                 android:background="#00000000"
                 android:hint="Company/Occupation"
-                android:textColor="#fff"
                 android:inputType="textEmailAddress"
                 android:paddingLeft="10dp"
+                android:textColor="#fff"
                 android:textColorHint="#fff"
                 android:textSize="14dp" />
         </RelativeLayout>
