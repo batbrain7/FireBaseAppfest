@@ -3,7 +3,11 @@ package tech.mohitkumar.firebaseappfest.Activities;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,7 +25,12 @@ public class AuthAcitvity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
-    String email, password;
+    EditText usernameEt, passwordEt, emailEt;
+    Button signUp;
+
+    String email;
+    String password;
+    String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +38,8 @@ public class AuthAcitvity extends AppCompatActivity {
         setContentView(R.layout.activity_auth_acitvity);
 
         mAuth = FirebaseAuth.getInstance();
+
+        attachViews();
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -44,9 +55,23 @@ public class AuthAcitvity extends AppCompatActivity {
             }
         };
 
-        startSignUp();
+        signUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startSignUp();
+            }
+        });
 
 //        startSignIn();
+
+    }
+
+    private void attachViews() {
+
+        usernameEt = (EditText) findViewById(R.id.username);
+        passwordEt = (EditText) findViewById(R.id.password);
+        emailEt = (EditText) findViewById(R.id.email);
+        signUp = (Button) findViewById(R.id.signup_button);
 
     }
 
@@ -73,19 +98,28 @@ public class AuthAcitvity extends AppCompatActivity {
 
     private void startSignUp() {
 
-        mAuth.createUserWithEmailAndPassword("uddishverma22@gmail.com", "uddish22")
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
+        email = emailEt.getText().toString();
+        password = passwordEt.getText().toString();
+        username = usernameEt.getText().toString();
 
-                        if (!task.isSuccessful()) {
-                            Toast.makeText(AuthAcitvity.this, "Sign up fail",
-                                    Toast.LENGTH_SHORT).show();
+        if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(username)) {
+
+            mAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
+
+                            if (!task.isSuccessful()) {
+                                Toast.makeText(AuthAcitvity.this, "Sign up fail",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+
                         }
-
-                    }
-                });
+                    });
+        } else {
+            Toast.makeText(this, "Please Enter Your Details", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
