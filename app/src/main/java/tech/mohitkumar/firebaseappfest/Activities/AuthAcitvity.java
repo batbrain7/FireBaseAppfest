@@ -34,6 +34,7 @@ import javax.microedition.khronos.opengles.GL;
 
 import tech.mohitkumar.firebaseappfest.Globals;
 import tech.mohitkumar.firebaseappfest.MainActivity;
+import tech.mohitkumar.firebaseappfest.Preferences;
 import tech.mohitkumar.firebaseappfest.R;
 import tech.mohitkumar.firebaseappfest.UserDetailsModel;
 
@@ -173,6 +174,13 @@ public class AuthAcitvity extends AppCompatActivity {
                                 reference.child("Users").child(user.getUid()).setValue(model);
                                 Log.d(TAG, "onComplete: Details pushed in firebase");
                                 //Storing all the values in shared prefs
+
+                                Preferences.setPrefs("email", email, getApplicationContext());
+                                Preferences.setPrefs("name", name, getApplicationContext());
+                                Preferences.setPrefs("phone", phone, getApplicationContext());
+                                Preferences.setPrefs("company", company, getApplicationContext());
+                                Preferences.setPrefs("profileLink", profileLink, getApplicationContext());
+                                Preferences.setPrefs("uid", String.valueOf(user), getApplicationContext());
 
                                 startActivity(new Intent(getApplicationContext(), SelectPhotoActivity.class));
                                 finish();
