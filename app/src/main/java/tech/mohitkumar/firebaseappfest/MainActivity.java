@@ -9,10 +9,15 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
+import android.content.Context;
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_PERMISSION = 3;
     private Button mButton;
     private ViewPager mViewPager;
+
+    private FloatingActionButton fab;
 
     private ShadowTransformer mCardShadowTransformer;
     private CardPagerFragmentAdapter mFragmentCardAdapter;
@@ -63,6 +70,17 @@ public class MainActivity extends AppCompatActivity {
 //            reference.child("Users").child(firebaseUser.getUid()).child("longitude").setValue("2");
 //        }
 
+        fab = (FloatingActionButton)findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                View v = View.inflate(MainActivity.this,R.layout.dialog_event,null);
+                AlertDialog.Builder db = new AlertDialog.Builder(MainActivity.this);
+                db.setView(v);
+                db.create().show();
+            }
+        });
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
         mViewPager.setPageMargin(-50);
 
