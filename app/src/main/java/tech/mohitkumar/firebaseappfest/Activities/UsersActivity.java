@@ -16,12 +16,15 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
 
 import tech.mohitkumar.firebaseappfest.Adapter.RecyclerCardAdapter;
+import tech.mohitkumar.firebaseappfest.Adapter.ReyclerUserCardAdapter;
 import tech.mohitkumar.firebaseappfest.MainActivity;
 import tech.mohitkumar.firebaseappfest.Models.CardItem;
+import tech.mohitkumar.firebaseappfest.Models.UserItems;
 import tech.mohitkumar.firebaseappfest.R;
 
 public class UsersActivity extends AppCompatActivity {
@@ -32,9 +35,10 @@ public class UsersActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     private Button mButton;
     private ViewPager mViewPager;
-    ArrayList<CardItem> list = new ArrayList<CardItem>();
+    ArrayList<UserItems> list = new ArrayList<UserItems>();
     // private ShadowTransformer mCardShadowTransformer;
     //, private CardPagerFragmentAdapter mFragmentCardAdapter;
+    AVLoadingIndicatorView indicatorView;
 
 
     DatabaseReference mDatabasechecked;
@@ -47,6 +51,9 @@ public class UsersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users);
+
+        indicatorView = (AVLoadingIndicatorView) findViewById(R.id.avi);
+        indicatorView.show();
 
         // mViewPager = (ViewPager) findViewById(R.id.viewPager);
 //         mViewPager.setPageMargin(-50);
@@ -65,19 +72,24 @@ public class UsersActivity extends AppCompatActivity {
                 for (DataSnapshot file : dataSnapshot.getChildren()) {
                     String name = file.child("name").getValue().toString();
                     String venue = file.child("occupation").getValue().toString();
+                    String profile = file.child("profileLink").getValue().toString();
+                    String pno = file.child("pno").getValue().toString();
 
                     Log.d("NAME",name);
 
-                    CardItem cardData = new CardItem(name, venue,"","");
+                    UserItems cardData = new UserItems(name, venue,profile,pno);
                     list.add(cardData);
 
 
                 }
+
                 recyclerView.setHasFixedSize(true);
-                adapter = new RecyclerCardAdapter(getApplicationContext(), list);
+                adapter = new ReyclerUserCardAdapter(getApplicationContext(), list);
                 RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(UsersActivity.this, LinearLayoutManager.HORIZONTAL, false);
                 recyclerView.setLayoutManager(mLayoutManager);
                 recyclerView.setAdapter(adapter);
+
+                indicatorView.hide();
                 //ArrayAdapter arrayAdapter = new ArrayAdapter(AssignmentChooseAct.this, android.R.layout.simple_list_item_1,fi);
 
                 //fileslv.setAdapter(arrayAdapter);

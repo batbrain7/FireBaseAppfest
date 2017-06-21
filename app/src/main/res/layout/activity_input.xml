@@ -6,29 +6,35 @@
     android:background="@drawable/signup_background"
     android:layout_height="match_parent"
     tools:context="tech.mohitkumar.firebaseappfest.Activities.InputActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="20dp">
+
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:cardElevation="12dp"
             app:cardCornerRadius="8dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="5dp">
+
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="First Name"
                     android:padding="5dp">
+
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLines="1"
-                        android:id="@+id/fname"/>
+                        android:id="@+id/fname" />
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -36,11 +42,12 @@
                     android:layout_height="wrap_content"
                     android:hint="Last Name"
                     android:padding="5dp">
+
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLines="1"
-                        android:id="@+id/lname"/>
+                        android:id="@+id/lname" />
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -48,6 +55,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Phone Number"
                     android:padding="5dp">
+
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -55,7 +63,7 @@
                         android:maxLength="10"
                         android:maxLines="1"
                         android:maxEms="10"
-                        android:id="@+id/pno"/>
+                        android:id="@+id/pno" />
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -63,12 +71,13 @@
                     android:layout_height="wrap_content"
                     android:hint="Email ID"
                     android:padding="5dp">
+
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLines="1"
                         android:id="@+id/email"
-                        android:inputType="textEmailAddress"/>
+                        android:inputType="textEmailAddress" />
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -76,11 +85,12 @@
                     android:layout_height="wrap_content"
                     android:hint="LinkedIn/Github"
                     android:padding="5dp">
+
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLines="1"
-                        android:id="@+id/linkedin"/>
+                        android:id="@+id/linkedin" />
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -88,12 +98,14 @@
                     android:layout_height="wrap_content"
                     android:hint="Occupation/Company"
                     android:padding="5dp">
+
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLines="1"
-                        android:id="@+id/company"/>
+                        android:id="@+id/company" />
                 </android.support.design.widget.TextInputLayout>
+
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -103,8 +115,7 @@
                     android:id="@+id/submit"
                     android:onClick="SignUp"
                     android:textColor="#000"
-                    android:layout_margin="20dp"
-                    />
+                    android:layout_margin="20dp" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
     </LinearLayout>

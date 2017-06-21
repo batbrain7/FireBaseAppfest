@@ -10,6 +10,7 @@ import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.EditText;
 
 import java.util.Locale;
 
@@ -17,26 +18,30 @@ import tech.mohitkumar.firebaseappfest.R;
 
 public class InputActivity extends AppCompatActivity {
 
-    String latitude,longitude;
+    String latitude, longitude;
     private static final int REQUEST_PERMISSION = 1;
+
+    EditText fname, lname, phone, linkedin, company;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input);
+
     }
+
 
     public void getCurrentLocation() {
 //        Log.d("tagg", "working");
         LocationManager locationManager;
-        LocationListener locationListener=new LocationListener() {
+        LocationListener locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                Geocoder geocoder=new Geocoder(getApplicationContext(), Locale.getDefault());
+                Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
 //                String result = "\nlatitude = " + location.getLatitude() +
 //                                "\nlongitude = " + location.getLongitude();
-                latitude=String.valueOf(location.getLatitude());
-                longitude=String.valueOf(location.getLongitude());
+                latitude = String.valueOf(location.getLatitude());
+                longitude = String.valueOf(location.getLongitude());
 //                Log.d("tagg","loc:"+result);
             }
 
