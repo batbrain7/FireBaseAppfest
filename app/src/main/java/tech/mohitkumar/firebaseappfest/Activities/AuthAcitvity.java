@@ -1,5 +1,6 @@
 package tech.mohitkumar.firebaseappfest.Activities;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import tech.mohitkumar.firebaseappfest.MainActivity;
 import tech.mohitkumar.firebaseappfest.R;
 import tech.mohitkumar.firebaseappfest.UserDetailsModel;
 
@@ -138,6 +140,8 @@ public class AuthAcitvity extends AppCompatActivity {
                                 UserDetailsModel model = new UserDetailsModel(name, email, phone, profileLink, company);
                                 reference.child("Users").child(user.getUid()).setValue(model);
                                 Log.d(TAG, "onComplete: Details pushed in firebase");
+                                Intent i = new Intent(AuthAcitvity.this, MainActivity.class);
+                                startActivity(i);
                             }
 
                         }
