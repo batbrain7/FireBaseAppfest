@@ -18,7 +18,6 @@
         </activity>
         <activity android:name=".Activities.AuthAcitvity" />
         <activity android:name=".Activities.InputActivity" />
-        <activity android:name=".Activities.ProfileActivityy" />
         <activity android:name=".Activities.ProfileActivity"></activity>
     </application>
 

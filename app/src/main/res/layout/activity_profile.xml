@@ -15,7 +15,7 @@
         android:id="@+id/lin_1"
         android:background="@drawable/diagonal_cut"
         >
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageView
             android:layout_marginTop="30dp"
             android:layout_width="70dp"
             android:layout_height="70dp"
