@@ -11,7 +11,7 @@ public interface CardAdapter {
 
     float getBaseElevation();
 
-    CardView getCardViewAt(int position);
+    int getCardViewAt(int position);
 
     int getCount();
 }

@@ -1,6 +1,5 @@
-package tech.mohitkumar.firebaseappfest;
+package tech.mohitkumar.firebaseappfest.Activities;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -20,11 +19,13 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-import tech.mohitkumar.firebaseappfest.Adapter.CardPagerAdapter;
 import tech.mohitkumar.firebaseappfest.Adapter.RecyclerCardAdapter;
+import tech.mohitkumar.firebaseappfest.MainActivity;
 import tech.mohitkumar.firebaseappfest.Models.CardItem;
+import tech.mohitkumar.firebaseappfest.R;
 
-public class MainActivity extends AppCompatActivity {
+public class UsersActivity extends AppCompatActivity {
+
 
     RecyclerView.LayoutManager layoutManager;
     RecyclerView.Adapter adapter;
@@ -32,14 +33,12 @@ public class MainActivity extends AppCompatActivity {
     private Button mButton;
     private ViewPager mViewPager;
     ArrayList<CardItem> list = new ArrayList<CardItem>();
-    public static String latt;
-    public  static String lng;
     // private ShadowTransformer mCardShadowTransformer;
-   //, private CardPagerFragmentAdapter mFragmentCardAdapter;
+    //, private CardPagerFragmentAdapter mFragmentCardAdapter;
 
 
     DatabaseReference mDatabasechecked;
-   // private ShadowTransformer mFragmentCardShadowTransformer;
+    // private ShadowTransformer mFragmentCardShadowTransformer;
     ArrayList<CardItem> arrayList = new ArrayList<CardItem>();
     String lat, longi;
     private boolean mShowingFragments = false;
@@ -47,9 +46,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_users);
 
-          // mViewPager = (ViewPager) findViewById(R.id.viewPager);
+        // mViewPager = (ViewPager) findViewById(R.id.viewPager);
 //         mViewPager.setPageMargin(-50);
 //        mViewPager.setHorizontalFadingEdgeEnabled(true);
 //        mViewPager.setFadingEdgeLength(30);
@@ -59,26 +58,24 @@ public class MainActivity extends AppCompatActivity {
         mDatabasechecked = FirebaseDatabase.getInstance().getReference();
         SharedPreferences prefs = getPreferences(MODE_PRIVATE);
         //String AgentID= prefs.getString("AgentID","");
-        mDatabasechecked.child("Events").addValueEventListener(new ValueEventListener() {
+        mDatabasechecked.child("Users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int i = 0;
                 for (DataSnapshot file : dataSnapshot.getChildren()) {
-                    String name = file.child("poi_nick_name").getValue().toString();
-                    String venue = file.child("venue").getValue().toString();
-                    String lat=file.child("lat").getValue().toString();
-                    String lng=file.child("lng").getValue().toString();
+                    String name = file.child("name").getValue().toString();
+                    String venue = file.child("occupation").getValue().toString();
 
                     Log.d("NAME",name);
 
-                    CardItem cardData = new CardItem(name, venue,lat,lng);
+                    CardItem cardData = new CardItem(name, venue,"","");
                     list.add(cardData);
 
 
                 }
                 recyclerView.setHasFixedSize(true);
                 adapter = new RecyclerCardAdapter(getApplicationContext(), list);
-                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
+                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(UsersActivity.this, LinearLayoutManager.HORIZONTAL, false);
                 recyclerView.setLayoutManager(mLayoutManager);
                 recyclerView.setAdapter(adapter);
                 //ArrayAdapter arrayAdapter = new ArrayAdapter(AssignmentChooseAct.this, android.R.layout.simple_list_item_1,fi);
