@@ -1,4 +1,4 @@
 # FireBaseAppfest
-## An application developed in Google Hackathon
+## An application developed in Google Hackathon.
 
 ### Technologies Used - Android, NodeJS, Firebase
